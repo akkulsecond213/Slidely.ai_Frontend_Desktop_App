@@ -19,7 +19,7 @@ Public Class ViewSubmissionsForm
                 FetchSubmissionData(currentIndex)
             Else
                 ' If there are no submissions, show a message and close the form
-                MessageBox.Show("There are no submissions available.", "No Submissions", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("There are no submissions available. Kindly create submissions", "No Submissions", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Close()
             End If
         Else
