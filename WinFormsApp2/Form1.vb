@@ -4,6 +4,9 @@ Imports System.Windows.Forms
 Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Set KeyPreview to true so the form receives key events
+        Me.KeyPreview = True
+
         ' Call RoundButton for each button that needs to be rounded and bordered
         RoundButton(BTNViewSubmissions)
         RoundButton(BTNCreateSubmission)
@@ -14,6 +17,7 @@ Public Class Form1
         btn.Cursor = Cursors.Hand
         btn.FlatAppearance.BorderSize = 0 ' Remove default border
 
+        ' Add a handler for the button's Paint event to draw the rounded corners and border
         AddHandler btn.Paint, Sub(sender As Object, e As PaintEventArgs)
                                   Dim g As Graphics = e.Graphics
                                   Dim path As New Drawing2D.GraphicsPath()
@@ -64,6 +68,17 @@ Public Class Form1
         Using createForm As New CreateSubmissions()
             createForm.ShowDialog()
         End Using
+    End Sub
+
+    ' Handle the KeyDown event to detect Ctrl+V and Ctrl+N
+    Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.Control AndAlso e.KeyCode = Keys.V Then
+            ' Ctrl+V: Open View Submissions form
+            OpenViewSubmissionsForm()
+        ElseIf e.Control AndAlso e.KeyCode = Keys.N Then
+            ' Ctrl+N: Open Create Submissions form
+            OpenCreateSubmissionsForm()
+        End If
     End Sub
 
 End Class

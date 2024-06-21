@@ -134,15 +134,6 @@ Public Class ViewSubmissionsForm
         End If
     End Sub
 
-    ' Handle key down events to simulate Ctrl+N and Ctrl+P
-    Private Sub ViewSubmissionsForm_Key(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
-        If e.Control AndAlso e.KeyCode = Keys.N Then
-            BTNNext.PerformClick() ' Simulate BTNNext click
-        ElseIf e.Control AndAlso e.KeyCode = Keys.P Then
-            BTNPrevious.PerformClick() ' Simulate BTNPrevious click
-        End If
-    End Sub
-
     ' Handle the Delete button click event to delete the current submission
     Private Sub ButtonDelete_Click(sender As Object, e As EventArgs) Handles ButtonDelete.Click
         ' Confirm before deletion
@@ -194,12 +185,6 @@ Public Class ViewSubmissionsForm
     End Sub
 
     ' Add this method to handle keyboard shortcuts
-    Private Sub ViewSubmissions_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
-        ' Handle Ctrl+D for ButtonDelete
-        If e.Control AndAlso e.KeyCode = Keys.D Then
-            ButtonDelete.PerformClick()
-        End If
-    End Sub
 
     Private Sub ButtonEdit_Click(sender As Object, e As EventArgs) Handles ButtonEdit.Click
         ' Hide unnecessary buttons when editing
@@ -210,13 +195,6 @@ Public Class ViewSubmissionsForm
 
         ' Open the CreateSubmissions form in edit mode with current data
         OpenCreateSubmissionsForm(currentIndex)
-    End Sub
-
-    Private Sub ViewSubmissions_KeyDownEdit(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
-        ' Handle Ctrl+D for ButtonDelete
-        If e.Control AndAlso e.KeyCode = Keys.E Then
-            ButtonEdit.PerformClick()
-        End If
     End Sub
 
     ' Method to open CreateSubmissions form with data for editing
@@ -292,12 +270,6 @@ Public Class ViewSubmissionsForm
         End Try
     End Sub
 
-    ' Handle key down events to simulate Ctrl+S for search
-    Private Sub ViewSubmissionsForm_KeyDownSearch(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
-        If e.Control AndAlso e.KeyCode = Keys.S Then
-            ButtonSearch.PerformClick() ' Simulate ButtonSearch click
-        End If
-    End Sub
 
     ' Method to handle keyboard shortcuts for Delete (Ctrl+D) and Edit (Ctrl+E)
     Private Sub ViewSubmissionsForm_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
@@ -322,6 +294,7 @@ Public Class ViewSubmissionsForm
         RoundAndBorderButton(ButtonDelete)
         RoundAndBorderButton(ButtonEdit)
         RoundAndBorderButton(ButtonSearch)
+ 
 
         ' Add more buttons as needed
     End Sub
